@@ -1,0 +1,6 @@
+framework module Pods_mvi_templateTests {
+  umbrella header "Pods-mvi-templateTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
