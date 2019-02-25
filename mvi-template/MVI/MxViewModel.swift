@@ -31,6 +31,7 @@ class MxViewModel<I: MxIntent, C: MxChange, S: MxState> {
     }
 
     func states() -> Observable<State> {
+        print("These are states")
         return statesObservable
     }
 
