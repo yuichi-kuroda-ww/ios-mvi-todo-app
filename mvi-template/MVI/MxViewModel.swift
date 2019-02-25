@@ -27,6 +27,7 @@ class MxViewModel<I: MxIntent, C: MxChange, S: MxState> {
     }()
 
     init(initialState: State) {
+        print("Initializer")
         self.initialState = initialState
     }
 
