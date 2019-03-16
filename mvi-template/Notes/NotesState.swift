@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum NotesState: MxState {
+enum NotesState: MxState, Equatable {
     case idle
     case empty
     case textIsRequiredError
