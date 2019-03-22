@@ -7,10 +7,14 @@
 
 import Foundation
 
-enum NotesState: MxState, Equatable {
-    case idle
-    case empty
-    case textIsRequiredError
-    case noteCreated(at: Int)
-    case noteDestroyed(at: Int)
+struct NotesState: MxState, Equatable {
+    let state: State
+    
+    enum State: Equatable {
+        case idle
+        case empty
+        case textIsRequiredError
+        case noteCreated(at: Int)
+        case noteDestroyed(at: Int)
+    }
 }

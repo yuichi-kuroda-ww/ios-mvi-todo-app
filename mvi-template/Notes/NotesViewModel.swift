@@ -51,19 +51,19 @@ class NotesViewModel: MxViewModel<NotesIntent, NotesChange, NotesState> {
 //        print("reducer() - previousState: \(previousState), change: \(change)")
         switch change {
         case .idle:
-            return .idle
+            return NotesState(state: .idle)
         case .fetchedNotes:
             if notes.isEmpty {
-                return .empty
+                return NotesState(state: .empty)
             } else {
-                return .idle
+                return NotesState(state: .idle)
             }
         case .createdNote(let index):
-            return .noteCreated(at: index)
+            return NotesState(state: .noteCreated(at: index))
         case .destroyedNote(let index):
-            return .noteDestroyed(at: index)
+            return NotesState(state: .noteDestroyed(at: index))
         case .createNoteError:
-            return .textIsRequiredError
+            return NotesState(state: .textIsRequiredError)
         }
     }
 }

@@ -73,7 +73,7 @@ class NotesViewController: MxViewController<NotesIntent, NotesChange, NotesState
     }
     
     func switchMainView(to state: NotesState) {
-        switch state {
+        switch state.state {
         case .empty:
             view.bringSubviewToFront(emptyView)
         default:
@@ -118,11 +118,11 @@ class NotesViewController: MxViewController<NotesIntent, NotesChange, NotesState
     }
 
     override func render(state: NotesState) {
-        switch state {
+        switch state.state {
         case .idle:
-            switchMainView(to: .idle)
+            switchMainView(to: state)
         case .empty:
-            switchMainView(to: .empty)
+            switchMainView(to: state)
         case .textIsRequiredError:
             let alertController = UIAlertController(title: "Note is empty", message: nil, preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default) { action in
@@ -141,7 +141,7 @@ class NotesViewController: MxViewController<NotesIntent, NotesChange, NotesState
     }
     
     override func provideViewModel() -> ViewModel {
-        return NotesViewModel(initialState: .idle)
+        return NotesViewModel(initialState: NotesState(state: .idle))
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
