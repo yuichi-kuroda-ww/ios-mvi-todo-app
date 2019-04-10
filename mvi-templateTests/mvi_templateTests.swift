@@ -63,9 +63,9 @@ class mvi_templateTests: XCTestCase {
         mviComponent = MviComponent()
         mviComponent.onRender = { [weak self] state in
             guard let strongSelf = self else { return }
-            if state == strongSelf.expectedState {
-                strongSelf.e.fulfill()
-            }
+            XCTAssert(state == strongSelf.expectedState)
+            
+            strongSelf.e.fulfill()
         }
     }
 
